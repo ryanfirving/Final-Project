@@ -2,15 +2,18 @@ def get_group_members():
     people = []
 
     while True:
-        name = input("Enter the name of a group member: ")
+        name = input("Enter the name of a group member: ").strip()
         people.append(name)
 
-        another = input("Is there another group member? (yes/no): ")
+        while True:
+            another = input("Is there another group member? (yes/no): ").strip().lower()
 
-        if another == "no":
-            break
-
-    return people
+            if another == "yes":
+                break  # go back to outer loop and add another name
+            elif another == "no":
+                return people  # exit the function completely
+            else:
+                print("Please enter 'yes' or 'no'.")
 
 
 def get_expenses():
