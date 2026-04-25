@@ -1,3 +1,18 @@
+def welcome_user():
+    print("Welcome to the Shared Expense Settlement Program!")
+    print()
+    print("This program will help your group figure out who owes whom after shared expenses.")
+    print("First, you will enter the names of the group members.")
+    print("Then, you will enter each expense, including:")
+    print("- who paid")
+    print("- how much they paid")
+    print("- who the expense was for")
+    print("- an optional note describing the expense")
+    print()
+    print("When you are done entering expenses, type 'Show balances'.")
+    print("The program will then calculate balances and create a repayment plan.")
+    print()
+
 def get_group_members():
     people = []
 
@@ -138,8 +153,10 @@ def create_repayment_plan(balances):
 
 
 def main():
+    welcome_user()
+
     people = get_group_members()
-    expenses = get_expenses()
+    expenses = get_expenses(people)
 
     paid = calculate_paid(expenses, people)
     owed = calculate_owed(expenses, people)
