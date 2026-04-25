@@ -1,3 +1,18 @@
+def get_group_members():
+    people = []
+
+    while True:
+        name = input("Enter the name of a group member: ")
+        people.append(name)
+
+        another = input("Is there another group member? (yes/no): ")
+
+        if another == "no":
+            break
+
+    return people
+
+
 def get_expenses():
     expenses = []
 
@@ -120,9 +135,9 @@ def create_repayment_plan(balances):
 
 
 def main():
+    people = get_group_members()
     expenses = get_expenses()
 
-    people = get_people(expenses)
     paid = calculate_paid(expenses, people)
     owed = calculate_owed(expenses, people)
     balances = calculate_balances(paid, owed)
