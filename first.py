@@ -31,22 +31,33 @@ def get_group_members():
                 print("Please enter 'yes' or 'no'.")
 
 
-def get_expenses():
+def get_expenses(people):
     expenses = []
 
     while True:
-        payer = input("Enter payer name (or type 'Show balances' to finish): ")
+        payer = input("Enter payer name (or type 'Show balances' to finish): ").strip()
 
         if payer == "Show balances":
             break
 
+        if payer not in people:
+            print("Invalid payer. Please choose from:", people)
+            continue
+
         amount = float(input("Enter amount paid: "))
 
         participants_input = input("Enter participants (comma-separated): ")
-        participants = participants_input.split(",")
+        participants = [p.strip() for p in participants_input.split(",")]
 
-        # Clean up spaces
-        participants = [p.strip() for p in participants]
+        valid = True
+        for person in participants:
+            if person not in people:
+                print(f"{person} is not in the group.")
+                valid = False
+
+        if not valid:
+            print("Please re-enter the expense using valid group members.\n")
+            continue
 
         note = input("Enter note (optional): ")
 
