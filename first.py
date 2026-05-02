@@ -1,3 +1,5 @@
+import csv
+
 def welcome_user():
     print("Welcome to the Shared Expense Settlement Program!")
     print()
@@ -17,7 +19,7 @@ def get_group_members():
     people = []
 
     while True:
-        name = input("Enter the name of a group member: ").strip()
+        name = input("Enter the name of a group member: ").strip().title()
 
         if name == "":
             print("Name cannot be blank.")
@@ -47,7 +49,7 @@ def get_expenses(people):
     expenses = []
 
     while True:
-        payer = input("Enter payer name (or type 'Show balances' to finish): ").strip()
+        payer = input("Enter payer name (or type 'Show balances' to finish): ").strip().title()
 
         if payer.lower() == "show balances":
             break
@@ -77,7 +79,7 @@ def get_expenses(people):
             print("Participants cannot be blank.")
             continue
 
-        participants = [p.strip() for p in participants_input.split(",")]
+        participants = [p.strip().title() for p in participants_input.split(",")]
 
         valid = True
 
@@ -104,6 +106,21 @@ def get_expenses(people):
 
     return expenses
 
+def save_expenses_to_csv(expenses, filename):
+    with open(filename, "w", newline="") as file:
+        writer = csv.writer(file)
+
+        writer.writerow(["payer", "amount", "participants", "note"])
+
+        for expense in expenses:
+            participants_string = ",".join(expense["participants"])
+
+            writer.writerow([
+                expense["payer"],
+                expense["amount"],
+                participants_string,
+                expense["note"]
+            ])
 
 def get_people(expenses):
     people = set()
