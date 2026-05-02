@@ -18,15 +18,27 @@ def get_group_members():
 
     while True:
         name = input("Enter the name of a group member: ").strip()
+
+        if name == "":
+            print("Name cannot be blank.")
+            continue
+
+        if name in people:
+            print("That person is already in the group.")
+            continue
+
         people.append(name)
 
         while True:
             another = input("Is there another group member? (yes/no): ").strip().lower()
 
             if another == "yes":
-                break  # go back to outer loop and add another name
+                break
             elif another == "no":
-                return people  # exit the function completely
+                if len(people) < 2:
+                    print("You need at least two people to split expenses.")
+                    break
+                return people
             else:
                 print("Please enter 'yes' or 'no'.")
 
