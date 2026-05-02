@@ -217,6 +217,9 @@ def main():
     people = get_group_members()
     expenses = get_expenses(people)
 
+    save_expenses_to_csv(expenses, "expenses.csv")
+    print("Expenses saved to expenses.csv.")
+
     paid = calculate_paid(expenses, people)
     owed = calculate_owed(expenses, people)
     balances = calculate_balances(paid, owed)
