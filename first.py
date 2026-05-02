@@ -1,4 +1,6 @@
 from storage import save_expenses_to_csv, load_expenses_from_csv
+from calculations import calculate_paid, calculate_owed, calculate_balances
+from repayment import create_repayment_plan
 
 def welcome_user():
     print("Welcome to the Shared Expense Settlement Program!")
@@ -115,85 +117,6 @@ def get_people(expenses):
             people.add(person)
 
     return list(people)
-
-
-def calculate_paid(expenses, people):
-    paid = {person: 0 for person in people}
-
-    for expense in expenses:
-        payer = expense["payer"]
-        paid[payer] += expense["amount"]
-
-    return paid
-
-
-def calculate_owed(expenses, people):
-    owed = {person: 0 for person in people}
-
-    for expense in expenses:
-        amount = expense["amount"]
-        participants = expense["participants"]
-
-        share = amount / len(participants)
-
-        for person in participants:
-            owed[person] += share
-
-    return owed
-
-
-def calculate_balances(paid, owed):
-    balances = {}
-
-    for person in paid:
-        balances[person] = paid[person] - owed[person]
-
-    return balances
-
-def create_repayment_plan(balances):
-    debtors = []
-    creditors = []
-
-    for person in balances:
-        balance = round(balances[person], 2)
-
-        if balance < 0:
-            debtors.append([person, -balance])
-        elif balance > 0:
-            creditors.append([person, balance])
-
-    payments = []
-
-    debtor_index = 0
-    creditor_index = 0
-
-    while debtor_index < len(debtors) and creditor_index < len(creditors):
-        debtor = debtors[debtor_index]
-        creditor = creditors[creditor_index]
-
-        amount = min(debtor[1], creditor[1])
-        amount = round(amount, 2)
-
-        payments.append({
-            "from": debtor[0],
-            "to": creditor[0],
-            "amount": amount
-        })
-
-        debtor[1] -= amount
-        creditor[1] -= amount
-
-        debtor[1] = round(debtor[1], 2)
-        creditor[1] = round(creditor[1], 2)
-
-        if debtor[1] == 0:
-            debtor_index += 1
-
-        if creditor[1] == 0:
-            creditor_index += 1
-
-    return payments
-
 
 def main():
     welcome_user()
