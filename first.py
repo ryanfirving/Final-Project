@@ -49,19 +49,38 @@ def get_expenses(people):
     while True:
         payer = input("Enter payer name (or type 'Show balances' to finish): ").strip()
 
-        if payer == "Show balances":
+        if payer.lower() == "show balances":
             break
 
         if payer not in people:
             print("Invalid payer. Please choose from:", people)
             continue
 
-        amount = float(input("Enter amount paid: "))
+        while True:
+            amount_input = input("Enter amount paid: ").strip()
 
-        participants_input = input("Enter participants (comma-separated): ")
+            try:
+                amount = float(amount_input)
+
+                if amount <= 0:
+                    print("Amount must be greater than 0.")
+                    continue
+
+                break
+
+            except ValueError:
+                print("Please enter a valid number, such as 12.50.")
+
+        participants_input = input("Enter participants (comma-separated): ").strip()
+
+        if participants_input == "":
+            print("Participants cannot be blank.")
+            continue
+
         participants = [p.strip() for p in participants_input.split(",")]
 
         valid = True
+
         for person in participants:
             if person not in people:
                 print(f"{person} is not in the group.")
@@ -71,7 +90,7 @@ def get_expenses(people):
             print("Please re-enter the expense using valid group members.\n")
             continue
 
-        note = input("Enter note (optional): ")
+        note = input("Enter note (optional): ").strip()
 
         expense = {
             "payer": payer,
