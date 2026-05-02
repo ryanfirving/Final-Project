@@ -122,6 +122,28 @@ def save_expenses_to_csv(expenses, filename):
                 expense["note"]
             ])
 
+def load_expenses_from_csv(filename):
+    expenses = []
+
+    try:
+        with open(filename, "r", newline="") as file:
+            reader = csv.DictReader(file)
+
+            for row in reader:
+                expense = {
+                    "payer": row["payer"],
+                    "amount": float(row["amount"]),
+                    "participants": row["participants"].split(","),
+                    "note": row["note"]
+                }
+
+                expenses.append(expense)
+
+    except FileNotFoundError:
+        print("No saved expense file found yet.")
+
+    return expenses
+
 def get_people(expenses):
     people = set()
 
@@ -215,7 +237,15 @@ def main():
     welcome_user()
 
     people = get_group_members()
-    expenses = get_expenses(people)
+
+    saved_expenses = load_expenses_from_csv("expenses.csv")
+
+    if len(saved_expenses) > 0:
+        print(f"{len(saved_expenses)} saved expenses were loaded.")
+
+    new_expenses = get_expenses(people)
+
+    expenses = saved_expenses + new_expenses
 
     save_expenses_to_csv(expenses, "expenses.csv")
     print("Expenses saved to expenses.csv.")
