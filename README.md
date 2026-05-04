@@ -46,21 +46,12 @@ The program also supports saving expenses to a CSV file and optionally loading t
 
 ## Design Notes
 
-The program is organized into multiple modules to improve readability and maintainability:
+The program is organized into multiple code files to improve readability:
 
 - user_input.py: handles all user interaction
 - storage.py: handles saving and loading data from CSV files
 - calculations.py: performs balance calculations
 - repayment.py: generates the repayment plan
-
-This modular structure separates different responsibilities and makes the program easier to understand and extend.
-
----
-
-## Known Limitations
-
-- The program assumes that previously saved expenses belong to the current group of users
-- If a different group uses the program, loaded expenses may not match the current participants
 
 ---
 
@@ -71,17 +62,9 @@ I used ChatGPT as a coding assistant during this project. ChatGPT helped me brai
 Specifically, I used ChatGPT to help with:
 - designing and building the repayment algorithm that determines who should pay whom
 - adding input validation for names, yes/no responses, amounts, and participants
-- writing the try/except structure for handling invalid numeric input
-- implementing CSV saving and loading to allow expenses to persist across sessions
-- reorganizing the program into multiple files to improve readability and structure
-- identifying and fixing bugs, such as invalid yes/no inputs being accepted
+- implementing CSV saving and loading
+- reorganizing the program into multiple files
+- fixing bugs, such as invalid yes/no inputs being accepted
 - refining and formatting this README
 
-I reviewed, tested, and modified all code in my own development environment to ensure it works correctly and meets the project requirements.
-
----
-
-## External Sources
-
-- Python CSV documentation:
-  https://docs.python.org/3/library/csv.html
+I reviewed, tested, and modified all code to ensure both full understanding and that it works correctly.
