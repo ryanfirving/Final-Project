@@ -57,7 +57,7 @@ The program is organized into multiple code files to improve readability:
 
 ## Use of AI Tools
 
-I used ChatGPT as a coding assistant during this project. ChatGPT helped me brainstorm ideas, debug issues, and write or revise portions of the code.
+I used ChatGPT as a coding assistant during this project. ChatGPT helped me brainstorm ideas, debug issues, and write / revise portions of the code.
 
 Specifically, I used ChatGPT to help with:
 - designing and building the repayment algorithm that determines who should pay whom
