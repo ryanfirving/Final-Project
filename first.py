@@ -20,15 +20,23 @@ def main():
 
     saved_expenses = []
 
-    choice = input("Do you want to load previous expenses? (yes/no): ").strip().lower()
+    while True:
+        choice = input("Do you want to load previous expenses? (yes/no): ").strip().lower()
 
-    if choice == "yes":
-        saved_expenses = load_expenses_from_csv("expenses.csv")
+        if choice == "yes":
+            saved_expenses = load_expenses_from_csv("expenses.csv")
 
-        if len(saved_expenses) > 0:
-            print(f"{len(saved_expenses)} saved expenses were loaded.")
+            if len(saved_expenses) > 0:
+                print(f"{len(saved_expenses)} saved expenses were loaded.")
+            else:
+                print("No saved expenses found.")
+            break
+
+        elif choice == "no":
+            break
+
         else:
-            print("No saved expenses found.")
+            print("Please enter 'yes' or 'no'.")
 
     if len(saved_expenses) > 0:
         print(f"{len(saved_expenses)} saved expenses were loaded.")
