@@ -2,16 +2,16 @@
 
 ## Description
 
-This program helps a group of users split shared expenses and determine who owes whom. Users first enter the members of a group, then input expenses by specifying who paid, how much was paid, and who participated in each expense. The program calculates each person’s balance and generates a repayment plan to settle debts efficiently.
+This program helps a group of users split shared expenses and determine who owes whom by creating the most efficient possible repayment plan. Users first enter the members of a group, then input expenses by specifying who paid, how much was paid, and who participated in each expense. The program calculates each person’s balance and generates a repayment plan to settle debts efficiently.
 
-The program also supports saving expenses to a CSV file and optionally loading them in future sessions. This allows users to continue tracking expenses across multiple runs of the program instead of losing data when the program ends.
+The program also supports saving expenses to a CSV file and optionally loading them in future sessions, which allows users to continue tracking expenses across multiple runs of the program instead of losing data when the program ends. It also allows users to maintain an observable sheet of expenses over time while using the program.
 
 ---
 
 ## How to Run
 
 1. Make sure all project files are in the same directory:
-   - first.py (main file)
+   - first.py
    - user_input.py
    - storage.py
    - calculations.py
@@ -19,7 +19,7 @@ The program also supports saving expenses to a CSV file and optionally loading t
 
 2. Run the program using Python:
 
-   python first.py
+   python3 first.py
 
 3. Follow the prompts:
    - Enter group members
