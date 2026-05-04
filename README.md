@@ -34,16 +34,6 @@ The program also supports saving expenses to a CSV file and optionally loading t
 
 ---
 
-## Features
-
-- Input validation (prevents invalid names, amounts, and participants)
-- Case-insensitive input handling
-- Persistent storage using CSV files
-- Modular design across multiple files
-- Automated repayment plan generation
-
----
-
 ## Design Notes
 
 The program is organized into multiple code files to improve readability:
