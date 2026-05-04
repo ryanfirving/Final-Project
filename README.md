@@ -12,7 +12,7 @@ The program also supports saving expenses to a CSV file and optionally loading t
 
 1. Make sure all project files are in the same directory:
    - first.py
-   - user_input.py
+   - userinput.py
    - storage.py
    - calculations.py
    - repayment.py
@@ -48,7 +48,7 @@ The program also supports saving expenses to a CSV file and optionally loading t
 
 The program is organized into multiple code files to improve readability:
 
-- user_input.py: handles all user interaction
+- userinput.py: handles all user interaction
 - storage.py: handles saving and loading data from CSV files
 - calculations.py: performs balance calculations
 - repayment.py: generates the repayment plan
