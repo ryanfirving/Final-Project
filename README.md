@@ -38,6 +38,7 @@ The program also supports saving expenses to a CSV file and optionally loading t
 
 The program is organized into multiple code files to improve readability:
 
+- first.py:
 - userinput.py: handles all user interaction
 - storage.py: handles saving and loading data from CSV files
 - calculations.py: performs balance calculations
@@ -51,10 +52,9 @@ I used ChatGPT as a coding assistant during this project. ChatGPT helped me debu
 
 Specifically, I used ChatGPT to help with:
 - designing and building the repayment algorithm that determines who should pay whom
-- adding input validation for names, yes/no responses, amounts, and participants
+- adding input error fixes for names, yes/no responses, amounts, and participants
 - implementing CSV saving and loading
 - reorganizing the program into multiple files
-- fixing bugs, such as invalid yes/no inputs being accepted
 - refining and formatting this README
 
 I identified bugs and thoroughly reviewed, tested, and modified all code to ensure both full understanding and that it works correctly.
