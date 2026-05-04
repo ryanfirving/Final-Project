@@ -38,9 +38,6 @@ def main():
         else:
             print("Please enter 'yes' or 'no'.")
 
-    if len(saved_expenses) > 0:
-        print(f"{len(saved_expenses)} saved expenses were loaded.")
-
     new_expenses = get_expenses(people)
 
     expenses = saved_expenses + new_expenses
